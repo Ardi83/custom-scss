@@ -1,0 +1,65 @@
+// Regular
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Regular'), local('ABCMonumentGroteskRegular'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskRegular.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Regular Italic
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Italic'), local('ABCMonumentGroteskItalic'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskRegularItalic.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskRegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+// Medium
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Medium'), local('ABCMonumentGroteskMedium'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskMedium.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Medium Italic
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Medium Italic'), local('ABCMonumentGroteskMediumItalic'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskMediumItalic.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskMediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+// Bold
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Bold'), local('ABCMonumentGroteskBold'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskBold.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Bold Italic
+@font-face {
+    font-family: 'ABC Monument Grotesk';
+    src: local('ABC Monument Grotesk Bold Italic'), local('ABCMonumentGroteskBoldItalic'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskBoldItalic.woff2') format('woff2'),
+        url('/assets/fonts/abc-monument-grotesk/ABCMonumentGroteskBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}

@@ -1,0 +1,136 @@
+/*
+ * Globally available variables. Local vars should be defined in the individual _partials.
+ */
+
+/****************** FONT VARS *******************/
+
+// Families
+$font-family-primary: 'ABC Monument Grotesk', Helvetica, sans-serif, Arial !default;
+$font-family-secondary: 'ABC Monument Grotesk', Helvetica, sans-serif, Arial !default;
+
+// Weights
+$font-weight-thin: 200;
+$font-weight-light: 300;
+$font-weight-regular: normal;
+$font-weight-medium: 500;
+$font-weight-bold: bold;
+
+// Sizes
+$font-size-3xs: 10px !default;
+$font-size-2xs: 12px !default;
+$font-size-xs: 13px !default;
+$font-size-s: 14px !default;
+$font-size-xm: 15px !default;
+$font-size-base: 16px !default; /* Equivalent to 100 % */
+$font-size-m: 18px !default;
+$font-size-l: 20px !default;
+$font-size-xl: 25px !default;
+$font-size-2xl: 27px !default;
+$font-size-3xl: 30px !default;
+$font-size-4xl: 35px !default;
+$font-size-5xl: 40px !default;
+$font-size-6xl: 48px !default;
+
+/****************** COLOR VARS *******************/
+
+// Native colors
+$color-native-black: #000000 !default;
+$color-native-white: #ffffff !default;
+
+// Primary colors
+$color-primary-black: #231f20 !default;
+$color-primary-white: #fafafa !default;
+
+// Accent colors
+$color-accent-blue: #0a50b5 !default;
+$color-accent-orange: #ed571c !default;
+
+// Playful colors
+$color-garden-green: #173d45 !default;
+$color-pastel-blue: #9fc4db !default;
+$color-pale-pink: #f1dfe1 !default;
+$color-lady-red: #67223a !default;
+$color-lookout-yellow: #ffde69 !default;
+$color-cardboard-beige: #a9927d !default;
+$color-warm-pale-yellow: #f7f5e7 !default;
+
+// Neutrals colors
+$color-grey-60: #929192 !default;
+$color-grey-50: #aeaeaf !default;
+$color-grey-40: #d1d2d4 !default;
+$color-grey-30: #e2e2e4 !default;
+$color-grey-20: #f1f1f2 !default;
+$color-grey-10: #f7f7f8 !default;
+
+// Usage-specific colors
+$color-text: $color-primary-black !default;
+$color-text-inverted: $color-primary-white !default;
+$color-text-muted: #aeaeaf !default;
+$color-text-disabled: #d1d2d4 !default;
+
+// Extra colors
+$color-button-blue: #0031eb !default;
+$color-link-blue: #0031eb !default;
+$color-divider: $color-primary-black;
+
+/****************** TRANSITION VARS *******************/
+
+// Durations
+$transition-duration-fast: 150ms;
+$transition-duration: 300ms;
+$transition-duration-slow: 500ms;
+
+// Timings
+$transition-timing: cubic-bezier(0.1, 0.6, 0.4, 1);
+
+/****************** SITE SIZE VARS *******************/
+$site-columns-mobile: 8;
+$site-columns-tablet: 12;
+$site-columns-desktop: 12;
+
+// Content cut-off widths
+$site-width-min: 320px;
+$site-width-max: 1520px;
+
+// Gutters
+$site-gutter-mobile: 25px;
+$site-gutter-tablet: 30px;
+$site-gutter-desktop: 30px;
+
+// Standard padding
+$site-padding: $site-gutter-desktop;
+$button-padding: 15px;
+
+// Standard vertical spacing
+$site-vertical-spacing: $site-padding;
+
+// Element vertical distance (space between spots)
+$site-box-spacing-xs: 10px;
+$site-box-spacing-s: 15px;
+$site-box-spacing-xm: 20px;
+$site-box-spacing-m: 40px;
+$site-box-spacing-l: 50px;
+$site-box-spacing-xl: 80px;
+$site-box-spacing-xxl: 100px;
+
+/****************** OTHER SIZE VARS *******************/
+
+// Header heights
+$site-header-height-mobile: 90px;
+$site-header-height-tablet: 104px;
+$site-header-height-desktop: 138px;
+
+// Svg size
+$svg-size-xs: 20px;
+$svg-size-s: 25px;
+$svg-size-m: 30px;
+$svg-size-l: 40px;
+
+/****************** Z-INDEX VARS *******************/
+
+$z-index-splash: 1;
+$z-index-mega-menu: 9;
+$z-index-main-menu: 9 + 1;
+$z-index-hover: 99;
+$z-index-overlay: 999;
+$z-index-modal: 9999;

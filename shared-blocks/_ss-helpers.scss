@@ -1,0 +1,66 @@
+// Visibility classes
+.ss-mobile-only {
+    @include respond-to(tablet, desktop) {
+        display: none !important;
+    }
+}
+
+.ss-tablet-only {
+    @include respond-to(mobile, desktop) {
+        display: none !important;
+    }
+}
+
+.ss-desktop-only {
+    @include respond-to(mobile, tablet) {
+        display: none !important;
+    }
+}
+
+.ss-hide-mobile {
+    @include respond-to(mobile) {
+        display: none !important;
+    }
+}
+
+.ss-hide-mobile-small {
+    @include respond-to(mobile-small) {
+        display: none !important;
+    }
+}
+
+.ss-hide-mobile-medium {
+    @include respond-to(mobile-medium) {
+        display: none !important;
+    }
+}
+
+.ss-hide-mobile-small-medium {
+    @include respond-to(mobile-small, mobile-medium) {
+        display: none !important;
+    }
+}
+
+.ss-hide-tablet {
+    @include respond-to(tablet) {
+        display: none !important;
+    }
+}
+
+.ss-hide-tablet-small-medium {
+    @include respond-to(tablet-small, tablet-medium) {
+        display: none !important;
+    }
+}
+
+.ss-hide-tablet-large {
+    @include respond-to(tablet-large) {
+        display: none !important;
+    }
+}
+
+.ss-hide-desktop {
+    @include respond-to(desktop) {
+        display: none !important;
+    }
+}

@@ -1,0 +1,98 @@
+/*
+ * Project-specific re-usable button styling.
+ * NOTE: "ss-btn" is prefixed to avoid conflicts with other styling e.g. inside Umbraco editors.
+ */
+
+// Button colors
+$button-primary-background: $color-button-blue !default;
+$button-primary-background-hover: darken($color-button-blue, 10%) !default;
+$button-primary-color: $color-primary-white !default;
+$button-primary-color-inactive: $color-grey-50 !default;
+$button-primary-background-inactive: $color-grey-30 !default;
+
+$button-primary-outlined-background: $color-button-blue !default;
+$button-primary-outlined-background-hover: darken($color-button-blue, 10%) !default;
+$button-primary-outlined-color: $color-button-blue !default;
+$button-primary-outlined-color-inactive: $color-grey-50 !default;
+$button-primary-outlined-background-inactive: $color-grey-50 !default;
+
+$button-close-color: $color-primary-black;
+$button-close-color-hover: darken($color-primary-black, 10%);
+
+.ss-btn {
+    @include button-static();
+
+    // to be used on the SPA
+    &__primary {
+        @include btn-icon();
+        background-color: $button-primary-background;
+        color: $button-primary-color;
+        transition: background-color $transition-duration-slow $transition-timing, color $transition-duration-slow $transition-timing;
+
+        &:hover {
+            background-color: $button-primary-background-hover;
+        }
+        &:disabled {
+            background-color: $button-primary-background-inactive;
+            color: $button-primary-color-inactive;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        &--outlined {
+            @include btn-icon();
+            background-color: transparent;
+            border: solid 1px $button-primary-outlined-background;
+            color: $button-primary-outlined-background;
+            transition: border $transition-duration-slow $transition-timing, color $transition-duration-slow $transition-timing,
+                background-color $transition-duration-slow $transition-timing;
+
+            &:hover {
+                background-color: rgba($button-primary-outlined-background-hover, 0.1);
+                border: solid 1px $button-primary-outlined-background-hover;
+                color: $button-primary-outlined-background-hover;
+            }
+            &:disabled {
+                background-color: transparent;
+                color: $button-primary-outlined-color-inactive;
+                border: solid 1px $button-primary-outlined-background-inactive;
+                cursor: default;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &__icon {
+        @include btn-icon();
+        justify-content: space-between;
+        padding: 0 $button-padding;
+
+        @include respond-to(desktop) {
+            padding: 0 $button-padding * 2;
+        }
+    }
+
+    // this close button is used on the right side overlays
+    &__close {
+        @include btn-icon();
+        display: flex;
+
+        .ss-btn-icon {
+            svg path {
+                stroke: $button-close-color;
+            }
+        }
+
+        &:hover {
+            .ss-btn-icon {
+                transform: rotateZ(90deg);
+                svg path {
+                    stroke: $button-close-color-hover;
+                }
+            }
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}

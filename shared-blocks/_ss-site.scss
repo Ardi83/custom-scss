@@ -1,0 +1,17 @@
+.ss-site {
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    min-width: $site-width-min;
+    min-height: 100vh;
+
+    &--no-scroll {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    &__footer {
+        margin-top: auto;
+    }
+}

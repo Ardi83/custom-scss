@@ -1,0 +1,54 @@
+$animations-fade-duration: $transition-duration !default;
+$animations-ring-loader-color: $color-grey-60 !default;
+
+@keyframes content-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes content-fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+%content-fade-in {
+    animation: content-fade-in $animations-fade-duration forwards;
+}
+
+%content-fade-out {
+    animation: content-fade-out $animations-fade-duration forwards;
+}
+
+@keyframes ring-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+%ring-loader {
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 64px;
+        height: 64px;
+        border: 6px solid;
+        border-color: $animations-ring-loader-color transparent $animations-ring-loader-color transparent;
+        border-radius: 50%;
+        margin: -32px 0 0 -32px;
+        animation: ring-loader 1.2s linear infinite;
+    }
+}

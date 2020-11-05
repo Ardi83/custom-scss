@@ -1,0 +1,87 @@
+/*
+ * Top-level typography.
+ * Inspiration from https://github.com/jgthms/minireset.css and personal experience.
+ */
+
+html,
+body,
+::placeholder {
+    @include typeset(BODYCOPY1);
+    color: $color-text;
+}
+
+h1 {
+    @include typeset(DISPLAY1);
+}
+
+h2 {
+    @include typeset(DISPLAY2);
+}
+
+h3 {
+    @include typeset(DISPLAY3);
+}
+
+h4 {
+    @include typeset(DISPLAY4);
+}
+
+h5 {
+    @include typeset(DISPLAY5);
+}
+
+h6 {
+    @include typeset(CAPTION);
+}
+
+button {
+    appearance: none;
+    padding: 0;
+    border: 0 none;
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    background: none;
+    cursor: pointer;
+
+    &:disabled {
+        background-color: $color-grey-30;
+        cursor: not-allowed;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+    font-family: $font-family-secondary;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+label {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+
+    &:disabled {
+        color: $color-grey-30;
+        cursor: not-allowed;
+    }
+}
+
+input,
+select,
+textarea {
+    font-family: $font-family-secondary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    line-height: normal;
+
+    &:disabled {
+        color: $color-grey-30;
+        border-color: $color-grey-30;
+        cursor: not-allowed;
+    }
+}

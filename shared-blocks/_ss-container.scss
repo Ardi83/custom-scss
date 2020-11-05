@@ -1,0 +1,27 @@
+// Use this to keep content withing the designed constraints
+
+.ss-container {
+    position: static;
+    width: 100%;
+    max-width: $site-width-max;
+    margin: 0 auto;
+    @include site-outer-gutter();
+
+    &--no-spacing {
+        padding: 0;
+    }
+
+    &__content {
+        position: static;
+        width: 100%;
+        @include site-gutter();
+
+        &--indented {
+            @include site-gutter(1);
+        }
+
+        &--no-spacing {
+            padding: 0;
+        }
+    }
+}

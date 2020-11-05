@@ -1,0 +1,299 @@
+/*
+ * Project-specific re-usable form styling.
+ * NOTE: "ss-form" is prefixed to avoid conflicts with other styling e.g. inside Umbraco editors.
+ */
+
+.ss-form {
+}
+
+//.form-group {
+//    &__container {
+//        margin: ($site-padding * 2) 0 $site-padding;
+//    }
+//
+//    &__dropdown {
+//        display: block;
+//        margin: $site-padding 0;
+//    }
+//
+//    &__label {
+//        @include typeset(BODYCOPY1);
+//        white-space: nowrap;
+//
+//        font-weight: $font-weight-medium;
+//        &--confirm {
+//            line-height: 24px;
+//            font-weight: $font-weight-bold;
+//            margin-top: 40px;
+//
+//            display: flex;
+//            flex-direction: column;
+//        }
+//    }
+//    /* Radio and checkbox style*/
+//    &__toggle {
+//        position: relative;
+//        cursor: pointer;
+//        border-bottom: 1px solid $form-divider;
+//        display: flex;
+//        justify-content: space-between;
+//        align-items: center;
+//
+//        input {
+//            display: none;
+//
+//            + span {
+//                position: relative;
+//                cursor: pointer;
+//                padding: $site-padding $site-padding $site-padding ($site-padding * 3);
+//                line-height: 48px;
+//
+//                &:before,
+//                &:after {
+//                    content: '';
+//                    position: absolute;
+//                    left: 0;
+//                    top: 50%;
+//                    width: 16px;
+//                    height: 16px;
+//                    border: 1px solid transparent;
+//                    border-radius: 50%;
+//                    margin-top: calc(-16px / 2);
+//                    cursor: pointer;
+//                }
+//
+//                &:before {
+//                    border-color: $form-toggle-color;
+//                }
+//
+//                &:after {
+//                    padding: 4px;
+//                    background-color: $form-toggle-color;
+//                    background-clip: content-box;
+//                    visibility: hidden;
+//                }
+//            }
+//
+//            &:checked {
+//                + span:after {
+//                    visibility: visible;
+//                }
+//            }
+//        }
+//
+//        &--checkbox {
+//            border-bottom: none;
+//            flex-direction: column;
+//            align-items: baseline;
+//
+//            input {
+//                + span {
+//                    border-radius: 25%;
+//                    line-height: 24px;
+//
+//                    &:before,
+//                    &:after {
+//                        border-radius: 25%;
+//                        background-color: transparent;
+//                        transition: background-color $transition-duration-slow $transition-timing;
+//                    }
+//
+//                    &:after {
+//                        background: transparent no-repeat center center;
+//                        background-size: 65%;
+//                        background-image: inline-svg(
+//                                '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#{$color-white}"><path d="M20.285 2L9 13.567 3.714 8.556 0 12.272 9 21 24 5.715z"/></svg>'
+//                        );
+//                    }
+//                }
+//
+//                &:checked {
+//                    + span:before {
+//                        background-color: $form-toggle-color;
+//                    }
+//                    + span:after {
+//                        visibility: visible;
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    &__input {
+//        width: 100%;
+//        border-radius: 24px;
+//        border: 1px solid $form-input-border-color;
+//        height: 48px;
+//        padding-left: $site-padding * 2;
+//        padding-right: 8px;
+//        margin: $form-input-margin 0;
+//        outline: none;
+//        transition: border $transition-duration-slow $transition-timing;
+//
+//        /* Chrome, Safari, Edge, Opera Removed arrows and spinners of input type number*/
+//        &::-webkit-outer-spin-button,
+//        &::-webkit-inner-spin-button {
+//            -webkit-appearance: none;
+//            margin: 0;
+//        }
+//
+//        /* Firefox */
+//        &[type='number'] {
+//            -moz-appearance: textfield;
+//        }
+//
+//        &.ng-valid.ng-touched {
+//            border-color: $form-message-success;
+//        }
+//
+//        &.ng-invalid.ng-dirty,
+//        &.ng-invalid.ng-touched {
+//            border-color: $form-message-error;
+//        }
+//
+//        &::placeholder {
+//            color: $form-input-placeholder-color;
+//            font-style: italic;
+//            @include typeset(SUBTITLE);
+//        }
+//
+//        &:focus {
+//            border-color: $form-input-border-color-focus;
+//        }
+//
+//        &--has-button {
+//            padding-right: calc(#{$form-input-button-width} + 12px);
+//            overflow: visible;
+//        }
+//
+//        &--text-area {
+//            height: 100px;
+//            padding-top: 12px;
+//            padding-right: 8px;
+//            resize: vertical;
+//            -webkit-overflow-scrolling: touch;
+//
+//            @include respond-to(desktop) {
+//                overflow-y: hidden;
+//                -ms-overflow-style: -ms-autohiding-scrollbar;
+//
+//                &:hover {
+//                    overflow-y: auto;
+//                }
+//
+//                &::-webkit-scrollbar-track {
+//                    background-color: $color-grey-dark;
+//                    border-radius: 6px;
+//                    margin: 16px;
+//                }
+//
+//                &::-webkit-scrollbar {
+//                    width: 6px;
+//                }
+//
+//                &::-webkit-scrollbar-thumb {
+//                    background-color: $color-black;
+//                    border-radius: 6px;
+//                }
+//            }
+//        }
+//    }
+//
+//    &__payment-icons {
+//        display: flex;
+//        svg {
+//            display: flex;
+//            width: 48px;
+//        }
+//    }
+//
+//    &__payment-icon {
+//        margin-left: 8px;
+//    }
+//
+//    &__input-field {
+//        position: relative;
+//    }
+//
+//    &__input-button {
+//        position: absolute;
+//        right: 0;
+//        top: $form-input-margin;
+//        min-width: $form-input-button-width;
+//        max-width: $form-input-button-width;
+//
+//        @include respond-to(tablet, desktop) {
+//            max-width: 200px;
+//        }
+//
+//        outline: none;
+//
+//        @include typeset(BODYCOPY1);
+//    }
+//
+//    &__required-label {
+//        color: $form-message-error;
+//
+//        &--checkbox {
+//            position: absolute;
+//            top: $site-padding;
+//            right: 0;
+//        }
+//    }
+//
+//    &__error {
+//        color: $form-message-error;
+//        position: absolute;
+//        top: -12px;
+//        font-size: $font-size-xs;
+//        font-style: italic;
+//        margin-left: $site-padding * 2;
+//
+//        &--checkbox {
+//            min-width: 220px;
+//            padding-left: $site-padding * 3;
+//        }
+//    }
+//
+//    &__link {
+//        font-size: $font-size-base;
+//        font-weight: $font-weight-base;
+//    }
+//
+//    &__help-text {
+//        font-size: $font-size-xs;
+//        font-style: italic;
+//        margin-left: $site-padding;
+//
+//        &--checkbox {
+//            margin-left: $site-padding * 3;
+//        }
+//    }
+//
+//    &--grey {
+//        background-color: $color-white-tint-1;
+//    }
+//
+//    &--align-right {
+//        display: flex;
+//        justify-content: flex-start;
+//    }
+//}
+//
+//.divider {
+//    border-bottom: 1px solid $form-divider;
+//    width: 100%;
+//    margin: $site-padding * 2 0;
+//
+//    &--no-margin-bottom {
+//        margin-bottom: 0;
+//    }
+//
+//    &--small {
+//        margin: 8px 0;
+//    }
+//
+//    &--black {
+//        border-color: $color-black;
+//    }
+//}

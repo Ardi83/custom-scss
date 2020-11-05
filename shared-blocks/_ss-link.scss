@@ -1,0 +1,78 @@
+// Link Colors
+$link-primary-color: $color-link-blue;
+$link-primary-hover: darken($color-link-blue, 10%);
+$link-inactive: $color-grey-60;
+
+.ss-link {
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    &__primary {
+        color: $link-primary-color;
+        transition: color $transition-duration-slow $transition-timing;
+
+        &:hover {
+            color: $link-primary-hover;
+            transition: color $transition-duration-slow $transition-timing;
+        }
+    }
+
+    &__button {
+        @include site-gutter(0.2, margin-right);
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: $font-size-2xs;
+        font-weight: $font-weight-bold;
+        line-height: 17px;
+        color: $color-primary-black;
+        transition: color $transition-duration-slow $transition-timing;
+
+        &__icon {
+            width: $svg-size-xs;
+            height: $svg-size-xs;
+            margin-right: 5px;
+            @include respond-to(tablet-large, desktop) {
+                width: $svg-size-s;
+                height: $svg-size-s;
+            }
+            svg {
+                width: 100%;
+                height: auto;
+                path {
+                    stroke: $color-primary-black;
+                    transition: stroke $transition-duration-slow $transition-timing;
+                }
+            }
+        }
+
+        &:hover,
+        &.active {
+            color: $color-primary-white;
+            background-color: $color-button-blue;
+            transition: color $transition-duration-slow $transition-timing;
+
+            svg {
+                path {
+                    stroke: $color-primary-white;
+                    transition: stroke $transition-duration-slow $transition-timing;
+                }
+            }
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &:last-of-type {
+        button {
+            margin-right: 0;
+        }
+    }
+
+    &--inactive {
+        color: $link-inactive;
+        cursor: default;
+        pointer-events: none;
+    }
+}

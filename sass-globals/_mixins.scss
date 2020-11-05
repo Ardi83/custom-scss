@@ -1,0 +1,437 @@
+// These should match config in app.module.ts
+$device-bps: (
+    'mobile': '(max-width: 767px)',
+    'mobile-small': '(max-width: 413px)',
+    'mobile-medium': '(min-width: 414px) and (max-width: 480px)',
+    'mobile-large': '(min-width: 481px) and (max-width: 767px)',
+    'tablet': '(min-width: 768px) and (max-width: 1367px)',
+    'tablet-small': '(min-width: 768px) and (max-width: 768px)',
+    'tablet-medium': '(min-width: 769px) and (max-width: 1111px)',
+    'tablet-large': '(min-width: 1112px) and (max-width: 1367px)',
+    'desktop': '(min-width: 1368px)',
+    'desktop-small': '(min-width: 1368px) and (max-width: 1439px)',
+    'desktop-medium': '(min-width: 1440px) and (max-width: 1519px)',
+    'desktop-large': '(min-width: 1520px)'
+);
+
+// Use with sizes defined above i.e. @include respond-to(tablet) or @include respond-to(tablet-small, tablet-medium) etc.
+@mixin respond-to($devices...) {
+    @each $device in $devices {
+        @media #{map-get($device-bps, $device)} {
+            @content;
+        }
+    }
+}
+
+// Adds outer gutter (instead of using .container)
+// OPTIONALLY: Pass in which properties you want the gutter to be applied on i.e. (padding-left) or even (margin-left, margin-right).
+@mixin site-outer-gutter($properties...) {
+    @if (length($properties) > 0) {
+        @each $property in $properties {
+            #{$property}: $site-gutter-mobile;
+            @include respond-to(tablet) {
+                #{$property}: $site-gutter-tablet;
+            }
+            @include respond-to(desktop) {
+                #{$property}: $site-gutter-desktop;
+            }
+        }
+    } @else {
+        padding-left: $site-gutter-mobile;
+        padding-right: $site-gutter-mobile;
+        @include respond-to(tablet) {
+            padding-left: $site-gutter-tablet;
+            padding-right: $site-gutter-tablet;
+        }
+
+        @include respond-to(desktop) {
+            padding-left: $site-gutter-desktop * 2;
+            padding-right: $site-gutter-desktop * 2;
+        }
+    }
+}
+
+// Adds breakpoint-specific site gutters to element.
+// OPTIONALLY: Pass in which properties you want the gutter to be applied on i.e. (padding-left) or even (margin-left, margin-right).
+@mixin site-gutter($indentedLevel: 0, $properties...) {
+    $indentedMobileMultiplier: 1;
+    $indentedTabletMultiplier: 2 * $indentedLevel;
+    $indentedDesktopMultiplier: 3 * $indentedLevel;
+    $indentedFullMultiplier: 5 * $indentedLevel;
+    @if (length($properties) > 0) {
+        @each $property in $properties {
+            @if ($indentedLevel > 0) {
+                #{$property}: $site-gutter-mobile * $indentedMobileMultiplier;
+            } @else {
+                #{$property}: $site-gutter-mobile;
+            }
+        }
+        @include respond-to(tablet) {
+            @each $property in $properties {
+                @if ($indentedLevel > 0) {
+                    #{$property}: $site-gutter-tablet * $indentedTabletMultiplier;
+                } @else {
+                    #{$property}: $site-gutter-tablet;
+                }
+            }
+        }
+        @include respond-to(desktop) {
+            @each $property in $properties {
+                @if ($indentedLevel > 0) {
+                    #{$property}: $site-gutter-desktop * $indentedDesktopMultiplier;
+                } @else {
+                    #{$property}: $site-gutter-desktop;
+                }
+            }
+        }
+    } @else {
+        @if ($indentedLevel > 0) {
+            padding-left: $site-gutter-mobile * $indentedMobileMultiplier;
+            padding-right: $site-gutter-mobile * $indentedMobileMultiplier;
+        } @else {
+            padding-left: $site-gutter-mobile;
+            padding-right: $site-gutter-mobile;
+        }
+        @include respond-to(tablet) {
+            @if ($indentedLevel > 0) {
+                padding-left: $site-gutter-tablet * $indentedTabletMultiplier;
+                padding-right: $site-gutter-tablet * $indentedTabletMultiplier;
+            } @else {
+                padding-left: $site-gutter-tablet;
+                padding-right: $site-gutter-tablet;
+            }
+        }
+        @include respond-to(desktop) {
+            @if ($indentedLevel > 0) {
+                padding-left: $site-gutter-desktop * $indentedDesktopMultiplier;
+                padding-right: $site-gutter-desktop * $indentedDesktopMultiplier;
+            } @else {
+                padding-left: $site-gutter-desktop;
+                padding-right: $site-gutter-desktop;
+            }
+        }
+        @include respond-to(desktop-large) {
+            @if ($indentedLevel > 0) {
+                padding-left: $site-gutter-desktop * $indentedFullMultiplier;
+                padding-right: $site-gutter-desktop * $indentedFullMultiplier;
+            } @else {
+                padding-left: $site-gutter-desktop;
+                padding-right: $site-gutter-desktop;
+            }
+        }
+    }
+}
+
+// Set bottom margin for each breakpoint - use this to space "spots".
+// Default sets for all breakpoints, but can be set to a single breakpoint (mobile, tablet or desktop)
+@mixin set-vertical-box-spacing($breakpoints: 'all', $multiplier: 1, $use-padding: false, $both-directions: false) {
+    $propertyType: 'margin';
+    @if ($both-directions == true) {
+        $multiplier: $multiplier / 2;
+    }
+    @if ($use-padding == true) {
+        $propertyType: 'padding';
+    }
+    @if ($breakpoints == 'all') {
+        #{$propertyType}-bottom: $site-box-spacing-xs * $multiplier;
+        @if ($both-directions) {
+            #{$propertyType}-top: $site-box-spacing-xs * $multiplier;
+        }
+        @include respond-to(tablet) {
+            #{$propertyType}-bottom: $site-box-spacing-xm * $multiplier;
+            @if ($both-directions) {
+                #{$propertyType}-top: $site-box-spacing-xm * $multiplier;
+            }
+        }
+        @include respond-to(desktop) {
+            #{$propertyType}-bottom: $site-box-spacing-l * $multiplier;
+            @if ($both-directions) {
+                #{$propertyType}-top: $site-box-spacing-l * $multiplier;
+            }
+        }
+    } @else if ($breakpoints == 'mobile') {
+        @include respond-to(mobile) {
+            #{$propertyType}-bottom: $site-box-spacing-xs * $multiplier;
+            @if ($both-directions) {
+                #{$propertyType}-top: $site-box-spacing-xs * $multiplier;
+            }
+        }
+    } @else if ($breakpoints == 'tablet') {
+        @include respond-to(tablet) {
+            #{$propertyType}-bottom: $site-box-spacing-xm * $multiplier;
+            @if ($both-directions) {
+                #{$propertyType}-top: $site-box-spacing-xm * $multiplier;
+            }
+        }
+    } @else if ($breakpoints == 'desktop') {
+        @include respond-to(desktop) {
+            #{$propertyType}-bottom: $site-box-spacing-l * $multiplier;
+            @if ($both-directions) {
+                #{$propertyType}-top: $site-box-spacing-l * $multiplier;
+            }
+        }
+    }
+}
+
+// Set "font-size" with breakpoint variations.
+// These should be used for "content" elements like spots / article page / news page etc.
+@mixin typeset($type) {
+    @if ($type == DISPLAY1) {
+        font-family: $font-family-primary;
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-medium;
+        line-height: 35px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-4xl;
+            line-height: 40px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-5xl;
+            line-height: 45px;
+        }
+    } @else if ($type == DISPLAY2) {
+        font-family: $font-family-primary;
+        font-size: $font-size-xl;
+        font-weight: $font-weight-medium;
+        line-height: 30px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-2xl;
+            line-height: 32px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-3xl;
+            line-height: 35px;
+        }
+    } @else if ($type == DISPLAY3) {
+        font-family: $font-family-primary;
+        font-size: $font-size-l;
+        font-weight: $font-weight-medium;
+        line-height: 25px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-l;
+            line-height: 25px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-xl;
+            line-height: 30px;
+        }
+    } @else if ($type == DISPLAY4) {
+        font-family: $font-family-primary;
+        font-size: $font-size-xm;
+        font-weight: $font-weight-medium;
+        line-height: 20px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-xm;
+            line-height: 20px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-l;
+            line-height: 22px;
+        }
+    } @else if ($type == DISPLAY5) {
+        font-family: $font-family-primary;
+        font-size: $font-size-s;
+        font-weight: $font-weight-medium;
+        line-height: 19px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-s;
+            line-height: 19px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-m;
+            line-height: 22px;
+        }
+    } @else if ($type == CAPTION) {
+        font-family: $font-family-primary;
+        font-size: $font-size-3xs;
+        font-weight: $font-weight-regular;
+        line-height: 14px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-2xs;
+            line-height: 17px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-2xs;
+            line-height: 17px;
+        }
+    } @else if ($type == SUBTITLE) {
+        font-family: $font-family-secondary;
+        font-size: $font-size-2xs;
+        font-weight: $font-weight-medium;
+        line-height: 18px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-s;
+            line-height: 22px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-base;
+            line-height: 24px;
+        }
+    } @else if ($type == BODYBIG) {
+        font-family: $font-family-primary;
+        font-size: $font-size-s;
+        font-weight: $font-weight-medium;
+        line-height: 22px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-xm;
+            line-height: 23px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-m;
+            line-height: 26px;
+        }
+    } @else if ($type == BODYCOPY1) {
+        font-family: $font-family-primary;
+        font-size: $font-size-2xs;
+        font-weight: $font-weight-regular;
+        line-height: 18px;
+        color: $color-primary-black;
+        @include respond-to(tablet) {
+            font-size: $font-size-xs;
+            line-height: 19px;
+        }
+        @include respond-to(desktop) {
+            font-size: $font-size-s;
+            line-height: 20px;
+        }
+    } @else {
+        @error "Typeset: " + $type + " is not valid";
+    }
+}
+
+// Truncate text with ellipsis
+@mixin truncate-text($ellipsis: true) {
+    white-space: nowrap;
+    overflow: hidden;
+
+    @if ($ellipsis == true) {
+        text-overflow: ellipsis;
+    }
+}
+
+@mixin button-static {
+    border-radius: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 40px;
+    text-decoration: none;
+    padding: $button-padding;
+    font-size: $font-size-s;
+    font-weight: $font-weight-medium;
+    line-height: 19px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:disabled {
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+@mixin btn-icon() {
+    .ss-btn-text {
+        transition: color $transition-duration-fast $transition-timing;
+    }
+
+    .ss-btn-icon {
+        transition: transform $transition-duration-fast $transition-timing;
+        width: $svg-size-s;
+        height: $svg-size-s;
+        svg {
+            width: 100%;
+            height: auto;
+            path {
+                transition: stroke $transition-duration-fast $transition-timing;
+            }
+        }
+    }
+}
+
+//@mixin btn-icon-coloring($button-bg-color, $hover-color, $filled-button, $button-color) {
+//    @include btn-icon();
+//
+//    .btn-icon {
+//        transform: translateX(-10px);
+//    }
+//
+//    @if $filled-button {
+//        &:hover {
+//            .btn-text {
+//                color: $hover-color;
+//            }
+//
+//            .btn-icon {
+//                transform: translateX(0);
+//                svg path {
+//                    stroke: $hover-color;
+//                }
+//            }
+//        }
+//    } @else {
+//        .btn-text {
+//            color: $button-bg-color;
+//        }
+//
+//        .btn-icon {
+//            svg path {
+//                stroke: $button-bg-color;
+//            }
+//        }
+//
+//        &:hover {
+//            .btn-text {
+//                color: $hover-color;
+//            }
+//
+//            .btn-icon {
+//                transform: translateX(0);
+//                svg path {
+//                    stroke: $hover-color;
+//                }
+//            }
+//        }
+//    }
+//}
+
+@mixin divider($color: $color-primary-black, $size: 1px) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: $size solid $color;
+        width: 100%;
+    }
+}
+
+@mixin container-divider($color: $color-primary-black, $size: 1px) {
+    @include divider($color, $size);
+
+    &::after {
+        left: auto;
+        width: calc(100% + #{$site-gutter-mobile * 2});
+
+        @include respond-to(tablet) {
+            width: calc(100% + #{$site-gutter-tablet * 2});
+        }
+
+        @include respond-to(desktop) {
+            width: calc(100% + #{$site-gutter-desktop * 2});
+        }
+    }
+}

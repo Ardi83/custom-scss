@@ -1,0 +1,26 @@
+// Use to space spots.
+
+.ss-spot {
+    width: 100%;
+    max-width: $site-width-max;
+    margin-left: auto;
+    margin-right: auto;
+    @include set-vertical-box-spacing();
+
+    &--no-margin {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    &__spacing-outer {
+        @include site-outer-gutter();
+    }
+
+    &__spacing-inner {
+        @include site-gutter();
+
+        &--indented {
+            @include site-gutter(2);
+        }
+    }
+}

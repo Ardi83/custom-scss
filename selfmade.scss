@@ -1,0 +1,37 @@
+/****** 3rd Party ******/
+/****** FONT-FACE ******/
+// Font face declarations.
+//@import 'font-face/some-font';
+@import 'fonts/abc-monument-grotesk';
+
+/****** SASS GLOBALS ******/
+// Re-usable sass functionality.
+@import 'sass-globals/variables';
+@import 'sass-globals/functions';
+@import 'sass-globals/mixins';
+@import 'sass-globals/animations';
+
+/****** BASE ******/
+// Basic HTML-Element styling (no classes).
+@import 'base/html-defaults';
+@import 'base/typography';
+
+/****** SHARED BLOCKS ******/
+// Re-usable BEM styling e.g. button or form styling classes.
+@import 'shared-blocks/ss-site';
+@import 'shared-blocks/ss-container';
+@import 'shared-blocks/ss-spot';
+@import 'shared-blocks/ss-helpers';
+@import 'shared-blocks/ss-btn';
+@import 'shared-blocks/ss-link';
+@import 'shared-blocks/ss-form';
+
+/****** COMPONENTS ******/
+// Component-specific styling should reside alongside the component.
+// If multiple components need the same styling, move the relevant styling to "BLOCKS".
+@import '../app/app.component';
+@import '../app/@features/layout/header/header.component';
+@import '../app/@features/navigation/main-menu.component';
+@import '../app/@features/navigation/meta-menu.component';
+@import '../app/@features/navigation/mobile-menu.component';
+@import '../app/@features/navigation/mega-menu.component';
